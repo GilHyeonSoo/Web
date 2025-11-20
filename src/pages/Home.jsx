@@ -1,19 +1,46 @@
+// src/pages/Home.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { categories } from '../data/categories';
+import { socialLinks } from '../data/socialLinks';
+import LinkCard from '../components/LinkCard';
+import '../styles/Home.css';
 
 const Home = () => {
   return (
     <div className="home-container">
-      <section className="hero">
-        <h1>Juso Art</h1>
-        <p>Discover the beauty of digital imagination.</p>
-        <Link to="/gallery" className="cta-button">View Gallery</Link>
+      {/* 소셜 링크 섹션 */}
+      <section className="social-links">
+        {socialLinks.map((social, idx) => (
+          <a 
+            key={idx} 
+            href={social.url}
+            className="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {social.name}
+          </a>
+        ))}
       </section>
-      
-      <section className="featured">
-        <h2>Latest Exhibitions</h2>
-        {/* 여기에 추천 작품 컴포넌트를 넣을 수 있음 */}
-      </section>
+
+      {/* 카테고리별 링크 그리드 */}
+      {categories.map(category => (
+        <section key={category.id} className="category-section">
+          <div className="category-header">
+            <h2>
+              <span className="category-icon">{category.icon}</span>
+              {category.name}
+            </h2>
+            <span className="category-badge">{category.links.length}개</span>
+          </div>
+          
+          <div className="links-grid">
+            {category.links.map(link => (
+              <LinkCard key={link.id} link={link} />
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   );
 };

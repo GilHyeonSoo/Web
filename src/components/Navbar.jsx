@@ -1,23 +1,25 @@
 // src/components/Navbar.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Palette } from 'lucide-react'; // 아이콘
+import { Menu, Search, LogIn, UserPlus } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({ onMenuClick }) => { // props로 onMenuClick 받기
   return (
     <nav className="navbar">
-      <div className="logo">
-        <Link to="/">
-          <Palette size={24} /> JusoArt
+      {/* 로고 영역 */}
+      <div className="navbar-left">
+        <button 
+          className="menu-toggle"
+          onClick={onMenuClick} // App.js에서 전달받은 함수 사용
+        >
+          <Menu size={24} />
+        </button>
+        <Link to="/" className="logo">
+          <span>주소아트</span>
         </Link>
       </div>
-      <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/gallery">Gallery</Link></li>
-        <li><Link to="/about">About</Link></li>
-      </ul>
     </nav>
   );
 };
 
-export default Navbar; // <-- 반드시 "export default"를 사용해야 합니다.
+export default Navbar;
