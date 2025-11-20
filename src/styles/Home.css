@@ -324,3 +324,69 @@
     height: 80px;
   }
 }
+
+/* Home.css 끝 부분에 추가 */
+
+/* ===== 링크등록신청 섹션 ===== */
+/* 옵션 3 CSS */
+.link-actions-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 30px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: left;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+.action-btn.secondary {
+  background: white;
+  color: #333;
+}
+
+.action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.action-btn .btn-icon {
+  font-size: 32px;
+}
+
+.btn-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.btn-content strong {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.btn-content small {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .link-actions-section {
+    grid-template-columns: 1fr;
+  }
+}

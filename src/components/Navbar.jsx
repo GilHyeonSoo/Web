@@ -15,7 +15,7 @@ const Navbar = ({ onMenuClick }) => { // props로 onMenuClick 받기
           <Menu size={24} />
         </button>
         <Link to="/" className="logo">
-          <span>주소아트</span>
+          <span>OpenLink</span>
         </Link>
       </div>
     </nav>

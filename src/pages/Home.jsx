@@ -13,17 +13,17 @@ const Home = () => {
         <div className="banner-row large-banners">
           <div className="banner-box large">
             <h3>광고 배너 1</h3>
-            <p>큰 배너 영역입니다</p>
+            <p>배너 입점 문의</p>
           </div>
           <div className="banner-box large">
             <h3>광고 배너 2</h3>
-            <p>큰 배너 영역입니다</p>
+            <p>배너 입점 문의</p>
           </div>
         </div>
         <div className="banner-row large-banners">
           <div className="banner-box large">
             <h3>광고 배너 1</h3>
-            <p>큰 배너 영역입니다</p>
+            <p>배너 입점 문의</p>
           </div>
           <div className="banner-box large">
             <h3>광고 배너 2</h3>
@@ -75,7 +75,23 @@ const Home = () => {
           </div>
         </div>
       </section>
-
+        <section className="link-actions-section">
+            <button className="action-btn primary">
+                <span className="btn-icon">📝</span>
+                <div className="btn-content">
+                <strong>링크등록신청</strong>
+                <small>무료로 등록하기</small>
+                </div>
+            </button>
+            
+            <button className="action-btn secondary">
+                <span className="btn-icon">💬</span>
+                <div className="btn-content">
+                <strong>문의하기</strong>
+                <small>궁금한 점이 있으신가요?</small>
+                </div>
+            </button>
+        </section>
       {/* Top10 카테고리 그리드 (가로 5개씩) */}
       <section className="top10-grid">
         {categories.map((category) => (
