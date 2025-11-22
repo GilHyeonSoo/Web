@@ -1,6 +1,6 @@
 // src/pages/CategoryPage.jsx
 import React from 'react';
-import { useParams, Link } from 'react-router-dom'; // Link 추가
+import { useParams, Link } from 'react-router-dom';
 import BannerSection from '../components/BannerSection';
 import LinkActionSection from '../components/LinkActionSection';
 import { categories } from '../data/categories';
@@ -8,7 +8,7 @@ import '../styles/CategoryPage.css';
 
 const CategoryPage = () => {
   const { id } = useParams();
-  const currentId = parseInt(id); // 현재 카테고리 ID (숫자로 변환)
+  const currentId = parseInt(id);
   
   const category = categories.find(c => c.id === currentId);
 
@@ -20,12 +20,13 @@ const CategoryPage = () => {
     <div className="home-container">
       <BannerSection />
       <LinkActionSection />
+
       {/* 카테고리 타이틀 */}
       <div className="category-page-header">
         <span className="header-icon">{category.icon}</span>
         <h2>{category.name} 전체 목록</h2>
       </div>
-      {/* 🆕 카테고리 빠른 이동 네비게이션 (추가됨) */}
+      {/* 카테고리 네비게이션 */}
       <nav className="category-nav-bar">
         {categories.map((c) => (
           <Link
@@ -38,9 +39,10 @@ const CategoryPage = () => {
           </Link>
         ))}
       </nav>
-      {/* 링크 그리드 */}
+
+      {/* 정사각형 그리드 섹션 */}
       <section className="category-grid-section">
-        {category.links.map((link) => (
+        {category.links.map((link, index) => (
           <a 
             key={link.id} 
             href={link.url} 
@@ -48,6 +50,24 @@ const CategoryPage = () => {
             target="_blank" 
             rel="noopener noreferrer"
           >
+            {/* 1. 좌측 상단 순위 뱃지 */}
+            <div className={`rank-badge rank-${index + 1}`}>
+               {index === 0 && '🥇'}
+               {index === 1 && '🥈'}
+               {index === 2 && '🥉'}
+               {index > 2 && <span className="rank-number">{index + 1}</span>}
+            </div>
+
+            {/* 2. 중앙 이미지 (300x100) */}
+            <div className="link-image-wrapper">
+              {/* 실제 이미지가 있다면 link.image 등을 사용하세요. 현재는 더미 이미지입니다. */}
+              <img 
+                src="https://placehold.co/300x100/333/E0E0E0?text=300x100+Image" 
+                alt={link.name} 
+              />
+            </div>
+
+            {/* 3. 하단 이름 */}
             <div className="link-content">
               <span className="link-name">{link.name}</span>
             </div>

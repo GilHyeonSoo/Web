@@ -32,34 +32,92 @@
   background: #1E1E1E;
   border: 1px solid #333;
   border-radius: 12px;
-  aspect-ratio: 1 / 1; /* 1:1 정사각형 비율 강제 */
+  aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
+  
+  /* 내부 배치 설정 (Flex) */
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: column; /* 세로 배치 */
+  justify-content: space-between; /* 위, 중간, 아래 분배 */
   align-items: center;
+  
   text-decoration: none;
   color: #E0E0E0;
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-  position: relative;
+  position: relative; /* 뱃지 위치 기준 */
   overflow: hidden;
+  padding: 10px; /* 내부 여백 */
 }
 
-/* 호버 효과 */
 .square-link-box:hover {
   transform: translateY(-5px);
-  border-color: #BB86FC; /* 포인트 컬러 */
+  border-color: #BB86FC;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
-.square-link-box .link-name {
-  font-size: 18px;
-  font-weight: 700;
-  text-align: center;
-  padding: 10px;
-  word-break: keep-all;
+/* 1. 순위 뱃지 (좌측 상단 고정) */
+.square-link-box .rank-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  /* 뱃지 스타일 (Home.css와 동일하게 맞춤) */
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
 }
-/* src/styles/CategoryPage.css */
+.square-link-box .rank-number {
+  width: 24px; height: 24px;
+  background: #f0f0f0; border-radius: 50%;
+  color: #333; font-size: 12px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+/* 순위별 색상 (Home.css에 있지만 여기서도 적용되도록 명시 가능) */
+.rank-1 .rank-number { background: #FFD700; color: #fff; }
+.rank-2 .rank-number { background: #C0C0C0; color: #fff; }
+.rank-3 .rank-number { background: #CD7F32; color: #fff; }
+
+/* 2. 이미지 래퍼 (중앙 배치) */
+.link-image-wrapper {
+  flex: 1; /* 남은 공간을 모두 차지하며 중앙에 오게 함 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.link-image-wrapper img {
+  width: 100%;
+  height: auto;
+  max-height: 100%; /* 박스를 넘어가지 않도록 제한 */
+  object-fit: contain; /* 비율 유지하며 보임 */
+  border-radius: 4px;
+}
+
+/* 3. 하단 이름 */
+.link-content {
+  width: 100%;
+  text-align: center;
+  padding-top: 8px;
+  border-top: 1px solid #333; /* 구분선 (선택사항) */
+  margin-top: 5px;
+}
+
+.square-link-box .link-name {
+  font-size: 15px;
+  font-weight: 700;
+  word-break: keep-all;
+  display: block;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 1200px) { .category-grid-section { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 992px) { .category-grid-section { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) {
+  .category-grid-section { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .category-nav-item { padding: 8px 16px; font-size: 13px; }
+}
 
 /* ... (기존 스타일 유지) ... */
 
