@@ -41,6 +41,7 @@
   /* 넘치는 텍스트 관리 */
   min-width: 0;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .banner-box:hover {
@@ -351,7 +352,7 @@
   .home-container { padding: 10px; }
 
   /* 1. 배너 섹션 */
-  .banner-row { gap: 5px; }
+  .banner-row { gap: 2px; }
   
   /* 큰 배너: 1열, 비율 적용 */
   .large-banners { grid-template-columns: 1fr !important; }
@@ -363,9 +364,17 @@
   .banner-box {
     width: 100% !important;
     height: auto !important; /* PC 고정 높이 무시 */
-    aspect-ratio: 4 / 1;     /* 4:1 비율 유지 */
     padding: 5px !important;
   }
+  .banner-box.large {
+    aspect-ratio: 6 / 1;  /* 예: 가로 4 : 세로 1 */
+  }
+
+  /* 3. 작은 박스 전용 비율 (원하는 대로 조절) */
+  .banner-box.small {
+    aspect-ratio: 3 / 1;  /* 예: 가로 3 : 세로 1 (좀 더 통통하게) */
+  }
+
   .banner-box.small p { display: block; font-size: 10px; opacity: 0.8; }
 
   /* 2. 링크 등록 버튼 */

@@ -118,4 +118,21 @@ export const categories = [
       { id: 10, name: "나이트몰", url: "https://www.nightmall.co.kr/" },
     ]
   },
+  {
+    id: 8,
+    name: "토토/카지노",
+    icon: "🏉",
+    links: [
+      { id: 1, name: "", url: "" },
+      { id: 2, name: "", url: "" },
+      { id: 3, name: "", url: "" },
+      { id: 4, name: "", url: "" },
+      { id: 5, name: "", url: "" },
+      { id: 6, name: "", url: "" },
+      { id: 7, name: "", url: "" },
+      { id: 8, name: "", url: "" },
+      { id: 9, name: "", url: "" },
+      { id: 10, name: "", url: "" },
+    ]
+  },
 ];

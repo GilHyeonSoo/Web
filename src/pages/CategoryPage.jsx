@@ -1,34 +1,44 @@
 // src/pages/CategoryPage.jsx
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom'; // Link 추가
 import BannerSection from '../components/BannerSection';
 import LinkActionSection from '../components/LinkActionSection';
 import { categories } from '../data/categories';
-import '../styles/CategoryPage.css'; // 전용 스타일 파일
+import '../styles/CategoryPage.css';
 
 const CategoryPage = () => {
-  const { id } = useParams(); // URL에서 id 가져오기
+  const { id } = useParams();
+  const currentId = parseInt(id); // 현재 카테고리 ID (숫자로 변환)
   
-  // 해당 id를 가진 카테고리 찾기
-  const category = categories.find(c => c.id === parseInt(id));
+  const category = categories.find(c => c.id === currentId);
 
   if (!category) {
-    return <div style={{ padding: '50px', textAlign: 'center' }}>카테고리를 찾을 수 없습니다.</div>;
+    return <div style={{ padding: '50px', textAlign: 'center', color: 'white' }}>카테고리를 찾을 수 없습니다.</div>;
   }
 
   return (
     <div className="home-container">
-      {/* 1. 공통 섹션 재사용 */}
       <BannerSection />
       <LinkActionSection />
-
-      {/* 2. 카테고리 타이틀 */}
+      {/* 카테고리 타이틀 */}
       <div className="category-page-header">
         <span className="header-icon">{category.icon}</span>
         <h2>{category.name} 전체 목록</h2>
       </div>
-
-      {/* 3. 새로운 정사각형 그리드 섹션 (PC 기준 5개씩) */}
+      {/* 🆕 카테고리 빠른 이동 네비게이션 (추가됨) */}
+      <nav className="category-nav-bar">
+        {categories.map((c) => (
+          <Link
+            key={c.id}
+            to={`/category/${c.id}`}
+            className={`category-nav-item ${c.id === currentId ? 'active' : ''}`}
+          >
+            <span className="nav-icon">{c.icon}</span>
+            <span className="nav-name">{c.name}</span>
+          </Link>
+        ))}
+      </nav>
+      {/* 링크 그리드 */}
       <section className="category-grid-section">
         {category.links.map((link) => (
           <a 
@@ -40,12 +50,9 @@ const CategoryPage = () => {
           >
             <div className="link-content">
               <span className="link-name">{link.name}</span>
-              {/* 필요한 경우 여기에 설명이나 아이콘 추가 가능 */}
             </div>
           </a>
         ))}
-        
-        {/* 빈 박스가 필요하다면 추가 로직 작성 가능 */}
       </section>
     </div>
   );

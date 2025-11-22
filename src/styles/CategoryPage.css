@@ -6,7 +6,7 @@
   gap: 10px;
   padding: 20px 0;
   border-bottom: 2px solid #333;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: black;
 }
 
@@ -58,4 +58,69 @@
   text-align: center;
   padding: 10px;
   word-break: keep-all;
+}
+/* src/styles/CategoryPage.css */
+
+/* ... (기존 스타일 유지) ... */
+
+/* 🆕 카테고리 네비게이션 바 스타일 */
+.category-nav-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 10px;
+  overflow-x: auto; /* 모바일에서 가로 스크롤 가능하게 */
+  padding-bottom: 10px; /* 스크롤바 공간 확보 */
+  margin-bottom: 20px;
+  
+  /* 스크롤바 숨기기 (선택 사항) */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.category-nav-bar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* 네비게이션 아이템 (버튼) */
+.category-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 기본 배경: 어두운 회색 */
+  border: 1px;
+  border-radius: 20px; /* 둥근 알약 모양 */
+  color: #A0A0A0;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap; /* 줄바꿈 방지 */
+  transition: all 0.2s ease;
+}
+
+/* 마우스 올렸을 때 */
+.category-nav-item:hover {
+  color: #E0E0E0;
+  transform: translateY(-2px);
+}
+
+/* 현재 선택된 카테고리 (활성화 상태) */
+.category-nav-item.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 포인트 컬러 */
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 10px rgba(118, 75, 162, 0.4);
+  font-weight: 700;
+}
+
+.category-nav-item .nav-icon {
+  font-size: 18px;
+}
+
+/* 모바일 대응 미세 조정 */
+@media (max-width: 768px) {
+  .category-nav-item {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
 }
