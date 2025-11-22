@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
-
+import '../styles/Sidebar.css'
 const Sidebar = ({ isOpen, onClose, categories }) => {
   return (
     <>
@@ -70,7 +70,7 @@ const Sidebar = ({ isOpen, onClose, categories }) => {
         }}>
           <div>
             <p style={{ margin: '0 0 5px 0' }}>📢 텔레그램 ID</p>
-            <strong>@jusoart114</strong>
+            <strong>@openlink1004</strong>
           </div>
         </div>
 
@@ -95,29 +95,6 @@ const Sidebar = ({ isOpen, onClose, categories }) => {
             </Link>
           ))}
         </nav>
-
-        {/* 하단 링크 */}
-        <div style={{
-          padding: '20px',
-          borderTop: '1px solid #e0e0e0',
-        }}>
-          <Link to="/notice" style={{
-            display: 'block',
-            padding: '10px 0',
-            color: '#666',
-            textDecoration: 'none',
-          }}>
-            공지사항
-          </Link>
-          <Link to="/support" style={{
-            display: 'block',
-            padding: '10px 0',
-            color: '#666',
-            textDecoration: 'none',
-          }}>
-            고객센터문의
-          </Link>
-        </div>
       </aside>
     </>
   );

@@ -25,13 +25,27 @@
 }
 
 .logo {
+  /* 1. 중앙 정렬 설정 */
+  position: absolute;       /* 위치를 자유롭게 배치 */
+  left: 50%;                /* 부모(Navbar) 기준 왼쪽에서 50% 이동 */
+  transform: translateX(-50%); /* 요소 크기의 절반만큼 다시 왼쪽으로 이동하여 정중앙 맞춤 */
+  
+  /* 2. 기본 폰트 설정 */
+  text-decoration: none;
+  font-size: 1.8rem;        /* 타이틀 크기 (그라데이션이 잘 보이게 약간 키움) */
+  font-weight: 900;         /* 두께를 굵게 해야 색감이 잘 삽니다 */
+  letter-spacing: -1px;     /* 자간을 좁혀서 단단한 느낌 */
   display: flex;
   align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.2em;
-  color: #333;
+  margin: 0;                /* 마진 제거 */
+}
+
+.logo span {
+  /* 3. 그라데이션 텍스트 적용 */
+  background: linear-gradient(to right, #6366f1, #a855f7, #ec4899); /* 요청하신 색상 */
+  -webkit-background-clip: text; /* 배경을 글자 모양으로 잘라냄 */
+  background-clip: text;
+  color: transparent;            /* 원래 글자색을 투명하게 해서 배경이 보이게 함 */
 }
 
 .logo img {

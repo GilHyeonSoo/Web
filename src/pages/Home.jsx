@@ -1,7 +1,6 @@
 // src/pages/Home.jsx
 import React from 'react';
 import { categories } from '../data/categories';
-import { socialLinks } from '../data/socialLinks';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -22,11 +21,11 @@ const Home = () => {
         </div>
         <div className="banner-row large-banners">
           <div className="banner-box large">
-            <h3>광고 배너 1</h3>
+            <h3>광고 배너 3</h3>
             <p>배너 입점 문의</p>
           </div>
           <div className="banner-box large">
-            <h3>광고 배너 2</h3>
+            <h3>광고 배너 4</h3>
             <p>큰 배너 영역입니다</p>
           </div>
         </div>
@@ -34,63 +33,102 @@ const Home = () => {
         {/* 작은 박스 4개 */}
         <div className="banner-row small-banners">
           <div className="banner-box small">
-            <h4>배너 3</h4>
-          </div>
-          <div className="banner-box small">
-            <h4>배너 4</h4>
-          </div>
-          <div className="banner-box small">
             <h4>배너 5</h4>
+            <p>배너 입점 문의</p>
           </div>
           <div className="banner-box small">
             <h4>배너 6</h4>
+            <p>배너 입점 문의</p>
+          </div>
+          <div className="banner-box small">
+            <h4>배너 7</h4>
+            <p>배너 입점 문의</p>
+          </div>
+          <div className="banner-box small">
+            <h4>배너 8</h4>
+            <p>배너 입점 문의</p>
           </div>
         </div>
         <div className="banner-row small-banners">
           <div className="banner-box small">
-            <h4>배너 3</h4>
+            <h4>배너 9</h4>
+            <p>배너 입점 문의</p>
           </div>
           <div className="banner-box small">
-            <h4>배너 4</h4>
+            <h4>배너 10</h4>
+            <p>배너 입점 문의</p>
           </div>
           <div className="banner-box small">
-            <h4>배너 5</h4>
+            <h4>배너 11</h4>
+            <p>배너 입점 문의</p>
           </div>
           <div className="banner-box small">
-            <h4>배너 6</h4>
+            <h4>배너 12</h4>
+            <p>배너 입점 문의</p>
           </div>
         </div>
         <div className="banner-row small-banners">
           <div className="banner-box small">
-            <h4>배너 3</h4>
+            <h4>배너 13</h4>
+            <p>배너 입점 문의</p>
           </div>
           <div className="banner-box small">
-            <h4>배너 4</h4>
+            <h4>배너 14</h4>
+            <p>배너 입점 문의</p>
           </div>
           <div className="banner-box small">
-            <h4>배너 5</h4>
+            <h4>배너 15</h4>
+            <p>배너 입점 문의</p>
           </div>
           <div className="banner-box small">
-            <h4>배너 6</h4>
+            <h4>배너 16</h4>
+            <p>배너 입점 문의</p>
+          </div>
+        </div>
+        <div className="banner-row small-banners">
+          <div className="banner-box small">
+            <h4>배너 17</h4>
+            <p>배너 입점 문의</p>
+          </div>
+          <div className="banner-box small">
+            <h4>배너 18</h4>
+            <p>배너 입점 문의</p>
+          </div>
+          <div className="banner-box small">
+            <h4>배너 19</h4>
+            <p>배너 입점 문의</p>
+          </div>
+          <div className="banner-box small">
+            <h4>배너 20</h4>
+            <p>배너 입점 문의</p>
           </div>
         </div>
       </section>
         <section className="link-actions-section">
-            <button className="action-btn primary">
-                <span className="btn-icon">📝</span>
-                <div className="btn-content">
-                <strong>링크등록신청</strong>
-                <small>무료로 등록하기</small>
-                </div>
-            </button>
-            
-            <button className="action-btn secondary">
-                <span className="btn-icon">💬</span>
-                <div className="btn-content">
-                <strong>문의하기</strong>
-                <small>궁금한 점이 있으신가요?</small>
-                </div>
-            </button>
+          <a 
+            href="https://t.me/openlink1004"
+            className="action-btn primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="btn-icon">📝</span>
+            <div className="btn-content">
+              <strong>배너등록신청</strong>
+              <small>상단 배너를 등록해보세요!</small>
+            </div>
+          </a>
+          <a 
+            href="https://t.me/openlink1004" 
+            className="action-btn secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="btn-icon">💬</span>
+            <div className="btn-content">
+              <strong>링크등록신청</strong>
+              <small>하단 링크를 등록해보세요!</small>
+            </div>
+          </a>
         </section>
       {/* Top10 카테고리 그리드 (가로 5개씩) */}
       <section className="top10-grid">
@@ -99,7 +137,10 @@ const Home = () => {
             {/* 카테고리 헤더 */}
             <div className="top10-header">
               <span className="header-icon">{category.icon}</span>
-              <h3>{category.name} Top10</h3>
+              <h3>
+                <span className="category-name">{category.name}</span>
+                <span className="top10-label">Top10</span>
+              </h3>
               <button className="more-btn">›</button>
             </div>
 

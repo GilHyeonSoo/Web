@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Search, LogIn, UserPlus } from 'lucide-react';
+import '../styles/Navbar.css';
 
 const Navbar = ({ onMenuClick }) => { // props로 onMenuClick 받기
   return (
