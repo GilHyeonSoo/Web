@@ -1,0 +1,61 @@
+/* src/styles/CategoryPage.css */
+
+.category-page-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0;
+  border-bottom: 2px solid #333;
+  margin-bottom: 30px;
+  color: black;
+}
+
+.category-page-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.category-page-header .header-icon {
+  font-size: 32px;
+}
+
+/* 정사각형 그리드 레이아웃 */
+.category-grid-section {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 한 줄에 5개 (PC 기준) */
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+/* 정사각형 링크 박스 */
+.square-link-box {
+  background: #1E1E1E;
+  border: 1px solid #333;
+  border-radius: 12px;
+  aspect-ratio: 1 / 1; /* 1:1 정사각형 비율 강제 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #E0E0E0;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 호버 효과 */
+.square-link-box:hover {
+  transform: translateY(-5px);
+  border-color: #BB86FC; /* 포인트 컬러 */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.square-link-box .link-name {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px;
+  word-break: keep-all;
+}

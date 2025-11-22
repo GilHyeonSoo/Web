@@ -1,25 +1,31 @@
-// src/App.js
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import Home from './pages/Home';
-import Gallery from './pages/Gallery';
-import About from './pages/About';
 import { categories } from './data/categories';
 import './App.css';
 
+// 페이지 컴포넌트 Lazy Loading 적용
+const Home = lazy(() => import('./pages/Home'));
+const Gallery = lazy(() => import('./pages/Gallery'));
+const About = lazy(() => import('./pages/About'));
+const CategoryPage = lazy(() => import('./pages/CategoryPage')); // 추가
+
+// 로딩 중 표시할 간단한 컴포넌트
+const LoadingFallback = () => (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', fontSize: '1.2rem' }}>
+    Loading...
+  </div>
+);
+
 function App() {
-  // 사이드바 상태를 App.js에서 관리
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <Router>
       <div className="App">
-        {/* Navbar에 메뉴 클릭 핸들러 전달 */}
         <Navbar onMenuClick={() => setIsSidebarOpen(true)} />
         
-        {/* Sidebar에 상태와 닫기 핸들러 전달 */}
         <Sidebar 
           isOpen={isSidebarOpen} 
           onClose={() => setIsSidebarOpen(false)}
@@ -27,16 +33,15 @@ function App() {
         />
         
         <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
+          <Suspense fallback={<LoadingFallback />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/category/:id" element={<CategoryPage />} />
+            </Routes>
+          </Suspense>
         </main>
-        
-        <footer>
-          <p>&copy; 2025 Juso Art. All rights reserved.</p>
-        </footer>
       </div>
     </Router>
   );
