@@ -6,7 +6,10 @@ const BannerSection = () => {
   const bannerData = useMemo(() => {
     // --- [1] 큰 배너 설정 ---
     const largeBannerConfig = [
-      { url: "https://www.kcasinojoin.com/", image: "/image/f98a2d63322b6804fcd212f8762a434a_tQvb8g9N_c385e7c6067ca83104d1a083138c363c103957e4.gif" },
+      { 
+        url: "", 
+        image: "" 
+      },
 
     ];
 
@@ -26,8 +29,8 @@ const BannerSection = () => {
     const smallBannerConfig = [
       // 0번 (첫 번째 작은 배너)
       { 
-        url: "https://om-6868.com/", 
-        image: "/image/f98a2d63322b6804fcd212f8762a434a_0WmSR1Ch_11fbeb30a3254a1a429e4b31df259811ed25e8de.gif" 
+        url: "", 
+        image: "" 
       },
     ];
 
@@ -76,7 +79,7 @@ const BannerSection = () => {
       <div className="banner-row large-banners">
         {renderBanners(bannerData.largeBanners.slice(0, 2), 'large')}
       </div>
-      <div className="banner-row large-banners">
+      {/* <div className="banner-row large-banners">
         {renderBanners(bannerData.largeBanners.slice(2, 4), 'large')}
       </div>
       <div className="banner-row large-banners">
@@ -97,7 +100,7 @@ const BannerSection = () => {
       </div>
       <div className="banner-row small-banners">
         {renderBanners(bannerData.smallBanners.slice(16, 20), 'small')}
-      </div>
+      </div> */}
     </section>
   );
 };
