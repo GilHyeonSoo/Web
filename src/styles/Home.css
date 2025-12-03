@@ -303,35 +303,114 @@
 /* ========================================= */
 /* 📱 모바일 전용 카테고리 바로가기 */
 /* ========================================= */
+/* ========================================= */
+/* 📱 모바일 전용 카테고리 바로가기 (C안 - Sticky) */
+/* ========================================= */
+/* ========================================= */
+/* 📱 모바일 전용 카테고리 바로가기 (C안 - Sticky) */
+/* ========================================= */
 .mobile-quick-nav {
-  display: none; /* 기본 숨김 */
+  display: none; /* 기본 숨김 (PC에서) */
 }
 
 @media (max-width: 768px) {
   .mobile-quick-nav {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
-    background: #2C2C2C; /* 다크 배경 포인트 */
-    padding: 12px;
+    display: block;
+    position: sticky;
+    top: 75px; /* Navbar 높이만큼 띄우기 */
+    z-index: 90; /* Navbar(100)보다 낮게 */
+    background: #2C2C2C;
+    
+    /* 🆕 양쪽 여백 추가 */
+    margin: 0 1px 20px 1px; /* 좌우 10px 여백 */
+    padding: 2px 2px;
+    
+    /* 🆕 둥근 모서리 추가 */
     border-radius: 12px;
+    
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    
+    /* 부드러운 배경 전환 */
+    transition: background 0.3s ease;
   }
 
+  /* 스크롤 컨테이너 (가로 스크롤 가능) */
+  .quick-nav-scroll-container {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 8px;
+    
+    /* 스크롤바 숨기기 */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .quick-nav-scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 개별 버튼 스타일 */
   .quick-nav-btn {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
-    min-width: 0;
+    padding: 8px 12px;
+    min-width: 60px;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    flex-shrink: 0; /* 버튼 축소 방지 */
+    
+    /* GPU 가속 활용 */
+    will-change: transform, background-color;
   }
 
-  .quick-icon { font-size: 22px; margin-bottom: 4px; }
-  .quick-name { font-size: 11px; color: #E0E0E0; white-space: nowrap; }
+  /* 활성화된 버튼 스타일 */
+  .quick-nav-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+  }
+
+  /* 일반 버튼 호버 효과 */
+  .quick-nav-btn:not(.active):active {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(0.95);
+  }
+
+  /* 아이콘 */
+  .quick-nav-btn .quick-icon { 
+    font-size: 22px;
+    margin-bottom: 4px;
+    transition: transform 0.2s ease;
+  }
+
+  .quick-nav-btn.active .quick-icon {
+    transform: scale(1.1);
+  }
+
+  /* 텍스트 */
+  .quick-nav-btn .quick-name { 
+    font-size: 10px;
+    color: #E0E0E0;
+    white-space: nowrap;
+    font-weight: 400;
+    transition: all 0.2s ease;
+  }
+
+  .quick-nav-btn.active .quick-name {
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
 }
+
+
 
 /* ========================================= */
 /* 📐 반응형 미디어 쿼리 (Responsive) */
@@ -422,3 +501,141 @@
   padding: 0 !important;
   background: none; /* 배경색 제거 */
 }
+
+/* ========================================= */
+/* 🚦 개별 링크 상태 표시등 */
+/* ========================================= */
+
+/* 링크 아이템 레이아웃 조정 */
+.top10-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.2s;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.top10-item:hover {
+  background: #f8f9fa;
+}
+
+.top10-item.empty {
+  color: #ccc;
+  pointer-events: none;
+}
+
+/* 링크 이름 영역 */
+.link-name {
+  flex: 1; /* 남은 공간 모두 차지 */
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 🆕 상태 표시등 컨테이너 */
+.link-status {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  flex-shrink: 0; /* 축소되지 않도록 */
+}
+
+/* 🆕 상태 표시 점 */
+.status-dot {
+  font-size: 12px;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* 체크 중 애니메이션 */
+.status-dot.checking {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 정상 작동 (초록불) */
+.status-dot.online {
+  filter: drop-shadow(0 0 2px rgba(0, 255, 0, 0.6));
+}
+
+/* 접속 불가 (빨간불) */
+.status-dot.offline {
+  filter: drop-shadow(0 0 2px rgba(255, 0, 0, 0.6));
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .status-dot {
+    font-size: 11px;
+  }
+  
+  .link-status {
+    margin-left: 8px;
+  }
+}
+
+/* ========================================= */
+/* 🚦 상태 체크 배너 */
+/* ========================================= */
+
+.status-check-banner {
+  text-align: center;
+  padding: 10px 16px;
+  margin: 12px auto;
+  max-width: 400px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-size: 13px;
+  color: #333;
+}
+
+.checking-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #667eea;
+}
+
+.checking-status .spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.checked-status {
+  font-weight: 500;
+  color: #27ae60;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .status-check-banner {
+    margin: 10px 16px;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
+
